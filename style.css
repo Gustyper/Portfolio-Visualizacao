@@ -1,0 +1,58 @@
+/* Cor de fundo da página */
+body {
+    background-color: #f4f4f4; /* Cor suave para o fundo */
+    font: 100%/1.5 system-ui;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* A altura da página vai preencher toda a tela */
+    flex-direction: column; /* Organiza os elementos de forma vertical */
+}
+
+/* Contêiner de texto */
+.Texto {
+    text-align: center; /* Centraliza o texto */
+    max-width: 50%; /* Limita a largura */
+    margin-bottom: 20px; /* Espaço abaixo do texto */
+    margin-top: 10vh; /* Espaço abaixo do texto */
+}
+
+/* Estilos para o título */
+h1 {
+    font-size: 2.5rem; /* Tamanho do título */
+    color: #333; /* Cor do título */
+}
+
+/* Estilos para os parágrafos */
+p {
+    font-size: 1.2rem; /* Tamanho da fonte do parágrafo */
+    color: #555; /* Cor mais suave para o texto */
+    line-height: 1.6;
+}
+
+/* Estilos para a imagem */
+img {
+    max-width: 40%; /* Limita a largura da imagem */
+	max-height: 80vh;
+    border-radius: 8px; /* Canto arredondado para a imagem */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
+}
+
+/* Menu de navegação */
+nav {
+    margin-top: 20px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #007bff; /* Cor azul para os links */
+    font-size: 1rem;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
