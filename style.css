@@ -1,58 +1,69 @@
-/* Cor de fundo da página */
-body {
-    background-color: #f4f4f4; /* Cor suave para o fundo */
-    font: 100%/1.5 system-ui;
+/* Reset some default styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background image with overlay */
+.background-image {
+    position: relative;
+    background-image: url('images/alone-hollow-knight.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* A altura da página vai preencher toda a tela */
-    flex-direction: column; /* Organiza os elementos de forma vertical */
+    justify-content: flex-start; /* Moved text to the left a bit */
+    align-items: center; /* Vertically center content */
 }
 
-/* Contêiner de texto */
+/* Overlay to darken the image */
+.background-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent layer */
+    z-index: 1; /* Place overlay above the background image */
+}
+
+/* Text styling */
+.text-container {
+    color: white;
+    text-align: right; /* Aligned the text to the left */
+    padding-right: 30px; /* Added some space from the left */
+    z-index: 2; /* Ensures the text is above the overlay */
+}
+
+.text-container h1 {
+    font-size: 4rem; /* Large font size for name */
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.text-container p {
+    font-size: 1.5rem; /* Smaller font size for "Portfólio" */
+}
+
+/* Basic styling for the other sections */
+body {
+    font-family: Arial, sans-serif;
+}
+
 .Texto {
-    text-align: center; /* Centraliza o texto */
-    max-width: 50%; /* Limita a largura */
-    margin-bottom: 20px; /* Espaço abaixo do texto */
-    margin-top: 10vh; /* Espaço abaixo do texto */
+    margin: 20px;
 }
 
-/* Estilos para o título */
-h1 {
-    font-size: 2.5rem; /* Tamanho do título */
-    color: #333; /* Cor do título */
-}
-
-/* Estilos para os parágrafos */
-p {
-    font-size: 1.2rem; /* Tamanho da fonte do parágrafo */
-    color: #555; /* Cor mais suave para o texto */
-    line-height: 1.6;
-}
-
-/* Estilos para a imagem */
-img {
-    max-width: 40%; /* Limita a largura da imagem */
-	max-height: 80vh;
-    border-radius: 8px; /* Canto arredondado para a imagem */
-    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
-}
-
-/* Menu de navegação */
 nav {
     margin-top: 20px;
-    text-align: center;
 }
 
 nav a {
     text-decoration: none;
-    color: #007bff; /* Cor azul para os links */
-    font-size: 1rem;
-    margin: 0 15px;
-}
-
-nav a:hover {
-    text-decoration: underline;
+    margin-right: 15px;
+    color: #333;
+    font-weight: bold;
 }
