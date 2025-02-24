@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mapas de Homicídios por Estação em São Paulo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  <style>
+    .mapa {
+      margin-bottom: 40px;
+    }
+    h1, h2 {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mapas de Homicídios em São Paulo por Estação do Ano</h1>
+
+  <h2>Verão (Dez, Jan, Fev)</h2>
+  <div id="verao" class="mapa"></div>
+
+  <h2>Outono (Mar, Abr, Mai)</h2>
+  <div id="outono" class="mapa"></div>
+
+  <h2>Inverno (Jun, Jul, Ago)</h2>
+  <div id="inverno" class="mapa"></div>
+
+  <h2>Primavera (Set, Out, Nov)</h2>
+  <div id="primavera" class="mapa"></div>
+
+  <script>
+    function criarSpec(estacao, meses) {
+      return {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "description": `Homicídios na ${estacao}`,
+        "data": { "url": "T1 - datavis/homicidios.csv", "format": {"type": "csv"} },
+        "transform": [
+          { "filter": { "field": "Mes", "oneOf": meses } }
+        ],
+        "mark": "circle",
+        "encoding": {
+          "longitude": { "field": "Longitude", "type": "quantitative" },
+          "latitude": { "field": "Latitude", "type": "quantitative" },
+          "size": { "field": "Total Crimes", "type": "quantitative" },
+          "tooltip": [
+            { "field": "Cidade", "type": "nominal" },
+            { "field": "Mes", "type": "nominal" },
+            { "field": "Total Crimes", "type": "quantitative" }
+          ]
+        },
+        "projection": { "type": "mercator" }
+      };
+    }
+
+    const specVerao = criarSpec("verão", ["Dez", "Jan", "Fev"]);
+    const specOutono = criarSpec("outono", ["Mar", "Abr", "Mai"]);
+    const specInverno = criarSpec("inverno", ["Jun", "Jul", "Ago"]);
+    const specPrimavera = criarSpec("primavera", ["Set", "Out", "Nov"]);
+
+    vegaEmbed('#verao', specVerao).catch(console.error);
+    vegaEmbed('#outono', specOutono).catch(console.error);
+    vegaEmbed('#inverno', specInverno).catch(console.error);
+    vegaEmbed('#primavera', specPrimavera).catch(console.error);
+  </script>
+</body>
+</html>
