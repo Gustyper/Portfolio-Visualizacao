@@ -1,68 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <title>Mapas de Homicídios por Estação em São Paulo</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-  <style>
-    .mapa {
-      margin-bottom: 40px;
-    }
-    h1, h2 {
-      font-family: Arial, sans-serif;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T1 - Gustavo Bianchi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Mapas de Homicídios em São Paulo por Estação do Ano</h1>
-
-  <h2>Verão (Dez, Jan, Fev)</h2>
-  <div id="verao" class="mapa"></div>
-
-  <h2>Outono (Mar, Abr, Mai)</h2>
-  <div id="outono" class="mapa"></div>
-
-  <h2>Inverno (Jun, Jul, Ago)</h2>
-  <div id="inverno" class="mapa"></div>
-
-  <h2>Primavera (Set, Out, Nov)</h2>
-  <div id="primavera" class="mapa"></div>
-
-  <script>
-    function criarSpec(estacao, meses) {
-      return {
-        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-        "description": `Homicídios na ${estacao}`,
-        "data": { "url": "T1 - datavis/homicidios.csv", "format": {"type": "csv"} },
-        "transform": [
-          { "filter": { "field": "Mes", "oneOf": meses } }
-        ],
-        "mark": "circle",
-        "encoding": {
-          "longitude": { "field": "Longitude", "type": "quantitative" },
-          "latitude": { "field": "Latitude", "type": "quantitative" },
-          "size": { "field": "Total Crimes", "type": "quantitative" },
-          "tooltip": [
-            { "field": "Cidade", "type": "nominal" },
-            { "field": "Mes", "type": "nominal" },
-            { "field": "Total Crimes", "type": "quantitative" }
-          ]
-        },
-        "projection": { "type": "mercator" }
-      };
-    }
-
-    const specVerao = criarSpec("verão", ["Dez", "Jan", "Fev"]);
-    const specOutono = criarSpec("outono", ["Mar", "Abr", "Mai"]);
-    const specInverno = criarSpec("inverno", ["Jun", "Jul", "Ago"]);
-    const specPrimavera = criarSpec("primavera", ["Set", "Out", "Nov"]);
-
-    vegaEmbed('#verao', specVerao).catch(console.error);
-    vegaEmbed('#outono', specOutono).catch(console.error);
-    vegaEmbed('#inverno', specInverno).catch(console.error);
-    vegaEmbed('#primavera', specPrimavera).catch(console.error);
-  </script>
+  <div class="container">
+    <div class="map">
+      <img src="../images/mapaT1.jpg" alt="Mapa explicativo">
+    </div>
+    <div class="Explicacao">
+      <p>
+        Para esta atividade, decidi seguir a mesma linha de pensamento da T0, mas com um direcionamento mais claro, dado que o conjunto de dados é maior. Assim, a pergunta escolhida foi: <strong>Qual é a cidade mais perigosa?</strong>
+      </p>
+      <p>
+        Durante a elaboração da T0, explorei dois esboços principais: o primeiro foi um gráfico de desvio da média, que buscava identificar padrões na média de assassinatos ao longo do ano. No entanto, com o aumento do número de cidades no conjunto de dados, essa visualização perdeu interpretabilidade, tornando-se pouco eficaz — selecionar algumas cidades manualmente também não faria sentido, já que o objetivo era revelar informações que não fossem facilmente perceptíveis a olho nu. O segundo esboço foi um mapa, que, surpreendentemente, apresentou resultados melhores. Apesar de eu ter considerado essa visualização ruim na T0, devido ao número limitado de apenas cinco cidades, agora, com mais dados disponíveis, o mapa se mostrou uma excelente ferramenta.
+      </p>
+      <p>
+        Na T0, criei um esboço de um mapa de bolhas, mas ressaltei que ele não representava bem as informações justamente pela limitação de dados. Desta vez, optei por manter a abordagem com o mapa, mas troquei as bolhas por um <strong>mapa coroplético</strong>, utilizando a seguinte fórmula para calcular a taxa de assassinatos por 100 mil habitantes:
+      </p>
+      <p style="text-align: center; font-size: 1.2rem; margin: 20px 0;">
+        Taxa = (Total de assassinatos nos 20 anos de dados / Última população conhecida) × 100.000
+      </p>
+      <p>
+        Utilizei o <strong>Power BI</strong> por já ter familiaridade com a ferramenta. O resultado revelou que cidades pequenas se destacam de forma significativa apenas com essa taxa. Isso ocorre porque, geralmente, cidades com menos de 10.000 habitantes podem apresentar taxas elevadas mesmo com poucos assassinatos — o que nem sempre reflete a realidade de forma justa. Apesar dessa limitação, optei por manter a métrica em nome da completude da informação.
+      </p>
+    </div>
+  </div>
 </body>
 </html>
