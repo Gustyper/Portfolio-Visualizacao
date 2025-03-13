@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T1 - Gustavo Bianchi</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="map">
+      <img src="../images/mapaT1.jpg" alt="Mapa explicativo">
+      <script type="module" src="../global.js"></script>
+    </div>
+    <div class="Explicacao">
+      <p>
+        Para esta atividade, decidi seguir a mesma linha de pensamento da T0, mas com um direcionamento mais claro, dado que o conjunto de dados é maior. Assim, a pergunta escolhida foi: <strong>Qual é a cidade mais perigosa?</strong>
+      </p>
+      <p>
+        Durante a elaboração da T0, explorei dois esboços principais: o primeiro foi um gráfico de desvio da média, que buscava identificar padrões na média de assassinatos ao longo do ano. No entanto, com o aumento do número de cidades no conjunto de dados, essa visualização perdeu interpretabilidade, tornando-se pouco eficaz — selecionar algumas cidades manualmente também não faria sentido, já que o objetivo era revelar informações que não fossem facilmente perceptíveis a olho nu. O segundo esboço foi um mapa, que, surpreendentemente, apresentou resultados melhores. Apesar de eu ter considerado essa visualização ruim na T0, devido ao número limitado de apenas cinco cidades, agora, com mais dados disponíveis, o mapa se mostrou uma excelente ferramenta.
+      </p>
+      <p>
+        Na T0, criei um esboço de um mapa de bolhas, mas ressaltei que ele não representava bem as informações justamente pela limitação de dados. Desta vez, optei por manter a abordagem com o mapa, mas troquei as bolhas por um <strong>mapa coroplético</strong>, utilizando a seguinte fórmula para calcular a taxa de assassinatos por 100 mil habitantes:
+      </p>
+      <p style="text-align: center; font-size: 1.2rem; margin: 20px 0;">
+        Taxa = (Total de assassinatos nos 20 anos de dados / Última população conhecida) × 100.000
+      </p>
+      <p>
+        Utilizei o <strong>Power BI</strong> por já ter familiaridade com a ferramenta. O resultado revelou que cidades pequenas se destacam de forma significativa apenas com essa taxa. Isso ocorre porque, geralmente, cidades com menos de 10.000 habitantes podem apresentar taxas elevadas mesmo com poucos assassinatos — o que nem sempre reflete a realidade de forma justa. Apesar dessa limitação, optei por manter a métrica em nome da completude da informação.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
